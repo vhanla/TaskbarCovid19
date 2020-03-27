@@ -4,6 +4,7 @@ TaskbarCovid19 / CoronaBand
 A Windows taskbar deskband that shows COVID-19 stats.
 
 ![snap01](https://raw.githubusercontent.com/vhanla/TaskbarCovid19/master/.gitassets/snap01.png)
+Shows chart popup info on mouse hover.
 
 API used Coronavirus tracking API (https://github.com/ExpDev07/coronavirus-tracker-api) 
 
