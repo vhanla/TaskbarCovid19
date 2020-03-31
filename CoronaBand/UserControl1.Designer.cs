@@ -40,6 +40,7 @@
             this.label1.Size = new System.Drawing.Size(54, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Loading...";
+            this.label1.MouseHover += new System.EventHandler(this.UserControl1_MouseHover);
             this.label1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label1_MouseMove);
             // 
             // UserControl1
@@ -53,7 +54,6 @@
             this.Load += new System.EventHandler(this.UserControl1_Load);
             this.MouseEnter += new System.EventHandler(this.UserControl1_MouseEnter);
             this.MouseLeave += new System.EventHandler(this.UserControl1_MouseLeave);
-            this.MouseHover += new System.EventHandler(this.UserControl1_MouseHover);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -65,7 +65,7 @@ namespace CoronaBand
             {
                 new LineSeries
                 {
-                    Title = "PE",
+                    Title = "Peru (PE)",
                     Values = new ChartValues<int> { 3, 5, 2, 3, 5}
                 }
             };
@@ -92,14 +92,14 @@ namespace CoronaBand
             Marshal.FreeHGlobal(accentPtr);
         }
 
-        internal void UpdateData(string country_code, Boolean add = false)
+        internal void UpdateData(string country_code, string caption, Boolean add = false)
         {
             cartesianChart1.LegendLocation = LegendLocation.Top;
             int seriesIdx = 0;
             if (add)
             {
                 seriesIdx = cartesianChart1.Series.Count;
-                cartesianChart1.Series.Add(new LineSeries { Title = country_code , Values = new ChartValues<int> { } });
+                cartesianChart1.Series.Add(new LineSeries { Title = caption , Values = new ChartValues<int> { } });
             }
             var req = new RestRequest("v2/locations?country_code="+country_code+"&timelines=true", Method.GET);
             //this.textBox1.Text = "Updating...";
@@ -127,7 +127,7 @@ namespace CoronaBand
         private void frmStats_Load(object sender, EventArgs e)
         {
             //EnableBlur();
-            UpdateData("PE");
+            UpdateData("PE", "Peru (PE)");
         }
 
         private void cartesianChart1_ChildChanged(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
@@ -137,7 +137,7 @@ namespace CoronaBand
 
         private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UpdateData("PE");
+            UpdateData("PE", "Peru (PE)");
         }
     }
 }

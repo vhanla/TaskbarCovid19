@@ -18,7 +18,7 @@ namespace CoronaBand
         private IRestClient client = new RestClient("https://coronavirus-tracker-api.herokuapp.com/");
 
 
-        //private frmStats frm2 = new frmStats();
+        private String confirmed, deaths, recovered, country;
         public UserControl1()
         {
             InitializeComponent();
@@ -26,10 +26,10 @@ namespace CoronaBand
 
         private void UserControl1_Load(object sender, EventArgs e)
         {
-            UpdateData("PE");  
+            UpdateData("PE", "Peru (PE)");  
         }
 
-        public void UpdateData(string countrycode)
+        public void UpdateData(string countrycode, string countrytext)
         {
             this.label1.Text = "Loading...";
             var request = new RestRequest("v2/locations?country_code="+countrycode, Method.GET);
@@ -38,17 +38,22 @@ namespace CoronaBand
                 request,
                 response =>
                 {
+                    this.label1.Text = "";
                     JObject output = (JObject)JsonConvert.DeserializeObject(response.Content);
                     var latestData = output["latest"];
-                    var confirmed = latestData["confirmed"].ToString();
-                    this.label1.Text = "Confirmed: " + confirmed;
+                    this.country = countrytext;
+                    this.confirmed = latestData["confirmed"].ToString();
+                    this.recovered = latestData["recovered"].ToString();
+                    this.deaths = latestData["deaths"].ToString();
+                    this.label1.Text = "Confirmed: " + this.confirmed;
                 }
             );
 
         }
         private void UserControl1_MouseHover(object sender, EventArgs e)
         {
-            //new ToolTip().Show("hola", this, Cursor.Position.X - this.Location.X, Cursor.Position.Y - this.Location.Y, 1000);
+            new ToolTip().Show("Country: "+country+"\nConfirmed: "+confirmed+"\nDeaths: "+deaths+"\nRecovered: "+recovered,
+                this, Cursor.Position.X - this.Location.X, Cursor.Position.Y - this.Location.Y, 1500);
         }
 
         private void UserControl1_MouseLeave(object sender, EventArgs e)
