@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.label1 = new WindowsFormsAero.ThemeLabel();
             this.SuspendLayout();
             // 
             // label1
@@ -37,7 +37,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(13, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 13);
+            this.label1.Size = new System.Drawing.Size(254, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Loading...";
             this.label1.MouseHover += new System.EventHandler(this.UserControl1_MouseHover);
@@ -60,7 +60,6 @@
         }
 
         #endregion
-
-        public System.Windows.Forms.Label label1;
+        public WindowsFormsAero.ThemeLabel label1;
     }
 }
